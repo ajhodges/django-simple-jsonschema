@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 from django.utils import termcolors
-from jsonschema import Draft4Validator
+from jsonschema import Draft6Validator
 from jsonschema.exceptions import SchemaError
 import json
 
@@ -23,7 +23,7 @@ class Command(BaseCommand):
         schemas = settings.SIMPLE_JSONSCHEMA
         for url, schema in schemas.items():
             try:
-                Draft4Validator.check_schema(schema)
+                Draft6Validator.check_schema(schema)
             except SchemaError as e:
                 errors.append({
                     'url': url,

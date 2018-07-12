@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.conf import settings
 from django.http import HttpResponse
-from jsonschema import Draft4Validator
+from jsonschema import Draft6Validator
 import json
 
 
@@ -21,10 +21,10 @@ class SimpleJsonschemaMiddleware(object):
             if isinstance(methods, tuple):
                 for method in methods:
                     schema_id = method.upper() + ':' + view_name
-                    self._schemas[schema_id] = Draft4Validator(schema)
+                    self._schemas[schema_id] = Draft6Validator(schema)
             elif isinstance(methods, str):
                 schema_id = methods.upper() + ':' + view_name
-                self._schemas[schema_id] = Draft4Validator(schema)
+                self._schemas[schema_id] = Draft6Validator(schema)
 
     def get_schema(self, request):
         view_name = request.resolver_match.view_name
