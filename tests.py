@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.test import TestCase
-from django_simple_jsonschema import SimpleJsonschemaMiddleware
+from django_simple_jsonschema.middleware import SimpleJsonschemaMiddleware
 from django_simple_jsonschema.management.commands.check_schema import Command
 from collections import namedtuple
 from jsonschema import Draft6Validator
